@@ -51,6 +51,28 @@
                 data[item.name] = item.value;
                 console.log(item.name + ' is ' + item.value);
             });
+
+            if (data['size'] == 'coffeezilla') {
+                if (data['strengthLevel'] == 100) {
+                    if (data['flavor'] == 'caramel') {
+                        $('#myModal .modal-title').text('Whipcream Caramel Achievement Unlocked');
+                        $('#myModal .modal-body').text('Want to put some whip cream on that coffee?');
+                        $('#myModal').modal();
+                    }
+                    if (data['flavor'] == 'almond') {
+                        $('#myModal .modal-title').text('Whipcream Almond Achievement Unlocked');
+                        $('#myModal .modal-body').text('Want to put some whip cream on that coffee?');
+                        $('#myModal').modal();
+                    }
+                    if (data['flavor'] == 'mocha') {
+                        $('#myModal .modal-title').text('Whipcream Mocha Achievement Unlocked');
+                        $('#myModal .modal-body').text('Want to put some whip cream on that coffee?');
+                        $('#myModal').modal();
+                    }
+
+                }
+            }
+
             console.log(data);
             fn(data);
             this.reset();
