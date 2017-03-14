@@ -13,6 +13,32 @@
         if (this.$formElement.length === 0) {
             throw new Error('Could not find element with selector: ' + selector);
         }
+
+        var slider = document.getElementById('strengthLevel');
+        var sliderOutput = document.getElementById('strengthOutput');
+        var sliderLabel = document.getElementById('strengthLabel');
+
+        // set initial color due to default value being 30
+        sliderOutput.style.color = 'green';
+        sliderLabel.style.color = 'green';
+
+        slider.addEventListener('input', function() {
+            sliderOutput.value = slider.value;
+            // change the color of the label and number based on intensity
+            var intensityColor;
+            if (slider.value < 33) {
+                sliderOutput.style.color = 'green';
+                sliderLabel.style.color = 'green';
+            } else if (slider.value < 67) {
+                sliderOutput.style.color = 'orange';
+                sliderLabel.style.color = 'orange';
+            } else {
+                sliderOutput.style.color = 'red';
+                sliderLabel.style.color = 'red';
+            }
+            sliderOutput.style.color = intensityColor;
+            sliderLabel.style.color = intensityColor;
+        });
     }
 
     FormHandler.prototype.addSubmitHandler = function(fn) {
@@ -29,6 +55,7 @@
             fn(data);
             this.reset();
             this.elements[0].focus();
+
         });
     };
 
